@@ -2,6 +2,7 @@ var path = require('path');
 var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var url = require('url');
 var paths = require('./paths');
@@ -202,6 +203,7 @@ module.exports = {
         minifyURLs: true
       }
     }),
+    new CopyWebpackPlugin([{ from: 'content', 'to': 'static/content' }]),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
